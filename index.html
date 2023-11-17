@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link rel="icon" type="image/png" href="/images/indigital.png">
+        <title>Indigital Test</title>
+    </head>
+    <body>
+        <div id="root">
+            <header class="header">
+                <a href='/src/singup_step1.html' class="btn">Singup</a>
+                <a href='/src/login.html' class="btn">Login</a>
+            </header>
+            <div class="welcome">
+                <h1 class="title">Welcome</h1>
+            </div>
+        </div>
+        <script
+            src="/indigitall/sdk.min.js" 
+            onload="indigitall.init({
+                appKey: '94cb9c3e-0749-450f-8445-49bf2b269d8a',
+                workerPath: '/indigitall/worker.min.js'
+            })"
+            async>    
+        </script>
+    </body>
+</html>

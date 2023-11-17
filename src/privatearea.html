@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link rel="icon" type="image" href="/images/indigital.png">
+        <title>Indigital Test</title>
+    </head>
+    <body>
+        <header class="header">
+            <button class="btn" id="logoutBtn">Logout</button>
+        </header>
+        <div class="welcome">
+            <h1 class="title">Private Area</h1>
+        </div>
+        <script src="/indigitall/sdk.min.js"></script>
+        <script>
+            window.indigitall.topicsList((topics) => {
+                console.log(topics)
+            }, (error) => {
+                console.log(error);
+            });
+
+            const DEVICE_ID = "MY_DEVICE_ID"
+
+            function testLogout(){
+                indigitall.logIn(DEVICE_ID, (device) => {
+                    console.log("Logout OK")
+                    window.location.href = "/index.html"
+                },(error) => {
+                    console.log("ERROR login")
+                })
+            }
+
+            document.getElementById('logoutBtn').addEventListener('click', testLogout);
+
+        </script>
+    </body>
+</html>

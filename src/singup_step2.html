@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link rel="icon" type="image/png" href="/images/indigital.png">
+        <title>Indigital Test</title>
+    </head>
+    <body> 
+        <header class="header">
+            <a role="button" href="singup_step1.html" class="btn">Singup</a>
+            <a role="button" href="login.html" class="btn">Login</a>
+        </header>
+        <div class="contentForm">
+            <h1 class="formTitle">Singup</h1>
+            <div method="post" class="form">
+                <div class="text">
+                    <input type="text" id="firstEmail">
+                    <span>Email</span>
+                </div>
+                <div class="text">
+                    <input type="text" id="secondEmail">
+                    <span>Email again</span>
+                </div>
+                <button class="sumbitBtn" id="sumbitBtn"> sumbit </button>
+            </div>
+        </div>
+        <script src="/indigitall/sdk.min.js"></script>
+        <script>
+            function sumbitOnClick() {
+                try {
+                    window.indigitall.topicsUnsubscribe(["incomplete_step2"], () => {
+                        window.location.href = "/src/singup_step3.html"
+                    });
+                } catch (error) {
+                    console.error('Error al desuscribirse del tema', error);
+                }           
+            }
+
+            function step2_CustomEvent () {
+                const customEventType = "step2"
+                const email = document.getElementById('firstEmail').value;
+                const secondEmail = document.getElementById('secondEmail').value;
+
+                indigitall.sendCustomEvent({
+                    eventType: customEventType,
+                    customData: {email, secondEmail},
+                    async: false,
+                }, (response) => {
+                    console.log(response)
+                }, (error) => {
+                    console.error(error)
+                })
+            }
+
+            function sumbitFunctions() {
+                step2_CustomEvent()
+                sumbitOnClick()
+            }
+
+            document.getElementById('sumbitBtn').addEventListener('click', sumbitFunctions);
+
+            window.indigitall.topicsList((topics) => {
+                    console.log(topics)
+                }, (error) => {
+                    console.error(error);
+                });
+        </script>
+    </body>
+</html>

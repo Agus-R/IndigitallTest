@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/styles/styles.css">
+        <link rel="icon" type="image/png" href="/images/indigital.png">
+        <title>Indigital Test</title>
+    </head>
+    <body> 
+        <header class="header">
+            <a href="singup_step1.html" class="btn"> Singup </a>
+            <a href="login.html" class="btn"> Login </a>
+        </header>
+        <div class="contentForm">
+            <h1 class="formTitle">Login</h1>
+            <div method="post" class="form">
+                <div class="text">
+                    <input type="text">
+                    <span>Email</span>
+                </div>
+                <div class="password">
+                    <input type="password">
+                    <span>Password</span>
+                </div>
+                <button class="sumbitBtn" id="sumbitBtn"> sumbit </button> 
+            </div>
+        </div> 
+        <script src="/indigitall/sdk.min.js"></script>
+        <script>
+            const DEVICE_ID = "MY_DEVICE_ID"
+
+            function testLogin() {
+                indigitall.logIn(DEVICE_ID, (device) => {
+                    console.log("Login OK")
+                    window.location.href = "/src/privatearea.html"
+                },(error) => {
+                    console.log("ERROR login")
+                })
+            }
+
+            document.getElementById('sumbitBtn').addEventListener('click', testLogin);
+        </script>
+    </body>
+</html>
